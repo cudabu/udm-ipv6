@@ -39,11 +39,6 @@ function create_custom_container_macvlan(){
 }
 
 function create_custom_container() {
-    echo ""
-	echo " Creating a Custom Container on UnifiOS 3.x"
-    echo ""
-
-#### check if directory exists and abort
 
 if [ -d "/data/custom/machines/$container_name" ] 
 then
@@ -81,7 +76,7 @@ cd /data/on_boot.d
 if [ -f "$file" ] ; then
     rm "$file"
 fi
-curl -LO https://raw.githubusercontent.com/peacey/unifios-utilities/nspawn/nspawn-container/scripts/10-setup-network.sh
+curl -LO https://raw.githubusercontent.com/cudabu/udm-ipv6/main/10-setup-network.sh
 chmod +x 10-setup-network.sh
 
 cat <<EOF > /etc/systemd/nspawn/"$container_name".nspawn
@@ -113,23 +108,7 @@ machinectl start "$container_name"
 
 }
 
-
-
-systemd-nspawn -M "$container_name" -D /data/custom/machines/"$container_name" /bin/bash -c "apt -y install curl &&
-curl -s -S -L https://raw.githubusercontent.com/AdguardTeam/AdGuardHome/master/scripts/install.sh | sh -s -- -v"
-
-
-echo "Go to http://${vlan_address}:3000 to configure AdGuard Home (or whatever IP your container has if you had select simple install)."
-read -p "Press enter to continue"
-
-}
-
 function setup_persistence() {
-    echo ""
-	echo " Configuring Persistence Across Firmware Updates"
-    echo ""
-#### Configure Persistence Across Firmware Updates
-echo "Configuring Persistence Across Firmware Updates" 
 cd /data/on_boot.d
 curl -LO https://raw.githubusercontent.com/peacey/unifios-utilities/nspawn/nspawn-container/scripts/0-setup-system.sh
 chmod +x 0-setup-system.sh
