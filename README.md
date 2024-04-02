@@ -13,7 +13,8 @@ This script enables UDM to receive up to 8 PDs on ATT IPv6 (tested with RG BGW32
 ## Result
 The end result is I am able to pull 8x /64 prefixes from AT&T but UDM looses a lot of visual functionality. Overall, given my lack of need for Ipv6 across my entire home network I've opted to only use IPv6 in the network. The price to pay is that almost none of the IPv6 support native to UDM remains enabled, hence options like DHCPv6 cannot be changed in the UI anymore. Firewall and routing rules remain functional, however.
 
-UDM console doesn't show internet connectivity. This is a false positive. 
+UDM console doesn't show internet connectivity. This is a false positive.
+
 ![UDM Console](https://github.com/cudabu/udm-ipv6/blob/main/images/udm_networks.jpeg)_
 
 ![Networks](https://github.com/cudabu/udm-ipv6/blob/main/images/udm_console.jpeg)
