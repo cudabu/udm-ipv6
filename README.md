@@ -47,6 +47,11 @@ start-stop-daemon -K -q -x /usr/sbin/dnsmasq
 In the UDM GUI go to Network > Settings > Security > Firewall Rules > Internet v6 and delete the rules created previously.
 ```
 
+## Next Steps
+
+- Intergrate 10-att-ipv6.sh with setup script
+- Revist UI impacts in future releases
+
 ## Credit
 
 This is a script I modified. The need for this is based on:
