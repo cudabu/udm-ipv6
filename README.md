@@ -15,7 +15,9 @@ The end result is I am able to pull 8x /64 prefixes from AT&T but UDM looses a l
 
 UDM console doesn't show internet connectivity. This is a false positive.
 
-![UDM Console](https://github.com/cudabu/udm-ipv6/blob/main/images/udm_networks.jpeg)_
+![UDM Console](https://github.com/cudabu/udm-ipv6/blob/main/images/udm_networks.jpeg)
+
+Networks show no IP leases, difficult to manage for non-IPv6 networks
 
 ![Networks](https://github.com/cudabu/udm-ipv6/blob/main/images/udm_console.jpeg)
 
