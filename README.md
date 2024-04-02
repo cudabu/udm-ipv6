@@ -36,7 +36,10 @@ rm /run/dnsmasq.conf.d/att-ipv6-dnsmasq.conf
 start-stop-daemon -K -q -x /usr/sbin/dnsmasq
 
 In the UDM GUI go to Network > Settings > Security > Firewall Rules > Internet v6 and delete the rules created previously.
-
+```
 
 ## Credit
 
+This is a script I modified. The need for this is based on:
+- [unifios-utilities/att-ipv6/README.md at main · unifi-utilities/unifios-utilities · GitHub](https://github.com/unifi-utilities/unifios-utilities/blob/main/att-ipv6/README.md)
+- and UDM 3.x doesn't support Podman now so I created a `nwpawn-container` following these steps, [unifios-utilities/nspawn-container at main · unifi-utilities/unifios-utilities · GitHub](https://github.com/unifi-utilities/unifios-utilities/tree/main/nspawn-container) calling it att-ipv6
