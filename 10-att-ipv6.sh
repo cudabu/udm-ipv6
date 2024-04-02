@@ -26,10 +26,10 @@ if ! machinectl status att-ipv6 >/dev/null 2>&1; then
     exit 1
 fi
 
-wan_iface="eth8"                                     # "eth9" for UDM Pro WAN2
-vlans="br4 br6 br7 br16 br18 br20 br22"              # "br0 br100 br101..."
-domain="cudabu.io"                                   # DNS domain
-dns6="[2600:1700:1bd0:17ac::c0a8:703],[2606:4700:4700::1001]" # Cloudflare DNS
+wan_iface="eth8"
+vlans="br4 br6 br7 br16 br18 br20 br22"
+domain="cudabu.io"
+dns6="[2600:1700:1bd0:17ac::c0a8:703],[2606:4700:4700::1001]"
 
 confdir=${DATA_DIR}/containers/att-ipv6
 
