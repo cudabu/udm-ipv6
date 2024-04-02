@@ -10,7 +10,13 @@ On ATT IPv6, the RG (residential gateway) receives a /60 prefix itself, but only
 
 This script enables UDM to receive up to 8 PDs on ATT IPv6 (tested with RG BGW320-500), usually starting at `2600:1700:X:yyyf::/64` down to `2600:1700:X:yyy8::/64`. Note that these may not always be assigned contiguous or in order.
 
-The price to pay is that almost none of the IPv6 support native to UDM remains enabled, hence options like DHCPv6 cannot be changed in the UI anymore. Firewall and routing rules remain functional, however.
+## Result
+The end result is I am able to pull 8x /64 prefixes from AT&T but UDM looses a lot of visual functionality. Overall, given my lack of need for Ipv6 across my entire home network I've opted to only use IPv6 in the network. The price to pay is that almost none of the IPv6 support native to UDM remains enabled, hence options like DHCPv6 cannot be changed in the UI anymore. Firewall and routing rules remain functional, however.
+
+UDM console doesn't show internet connectivity. This is a false positive. 
+![images/udm_console.jpeg]
+
+![images/udm_networks.jpeg]
 
 
 ## Install notes
