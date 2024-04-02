@@ -9,35 +9,6 @@ vlan_id=7
 vlan_address="192.168.7.3/24"
 vlan_gateway="192.168.7.2"
 
-
-##
-# Color  Variables
-##
-green='\e[32m'
-blue='\e[34m'
-clear='\e[0m'
-
-##
-# Color Functions
-##
-
-ColorGreen(){
-	echo -ne $green$1$clear
-}
-ColorBlue(){
-	echo -ne $blue$1$clear
-}
-
-
-function create_custom_container_macvlan(){
-    echo "You have selected to setup a container to use an Isolated MacVLAN Network AKA Vlan."
-    read -p "Press enter to continue OR  ctrl + c  to cancel."
-    create_custom_container ;
-    setup_networking_MACVLAN ;
-    setup_persistence ;
-    setup_backup_dpkg_files
-}
-
 function create_custom_container() {
 
 if [ -d "/data/custom/machines/$container_name" ] 
@@ -110,49 +81,13 @@ machinectl start "$container_name"
 
 function setup_persistence() {
 cd /data/on_boot.d
-curl -LO https://raw.githubusercontent.com/peacey/unifios-utilities/nspawn/nspawn-container/scripts/0-setup-system.sh
+curl -LO  https://raw.githubusercontent.com/cudabu/udm-ipv6/main/0-setup-system.sh
 chmod +x 0-setup-system.sh
 
 mv 0-setup-system.sh 02-setup-system.sh
 }
 
-function setup_backup_dpkg_files() {
-    echo ""
-	echo " Downloading the backup dpkg package files"
-    echo ""
-#### Download the backup dpkg package files for systemd-container and dependencies into /data/custom/dpkg. 
-#####These packages will only be used as a backup install in case the Internet is down after the first boot after an update.
-echo "Configuring backup install"
-mkdir -p /data/custom/dpkg && cd /data/custom/dpkg
-apt download systemd-container libnss-mymachines debootstrap arch-test
-
-echo " Container setup has ended .. :) "
-}
-
-menu(){
-echo -ne "
-Create a container with systemd-nspawn
-Select your option from below:
-$(ColorGreen '1)') Create a Custom Container Simple
-$(ColorGreen '2)') Create a Custom Container Mac Vlan
-$(ColorGreen '3)') Install Adguard in existing container.
-$(ColorGreen '4)') Print set Variables.
-$(ColorGreen '5)') Set Container Variables (name & Root Password).
-$(ColorGreen '6)') Set Container Network Variables. (Vlan ID & IP address).
-$(ColorGreen '0)') Exit
-$(ColorBlue 'Choose an option:') "
-        read a
-        case $a in
-	        1) create_custom_container_simple ; menu ;;
-	        2) create_custom_container_macvlan ; menu ;;
-	        3) setup_adguard ; menu ;;
-            4) echo_variables ; menu ;;
-            5) set_variables ; menu ;;
-            6) set_container_network_variables ; menu ;;
-		0) exit 0 ;;
-		*) echo -e $red"Wrong option."$clear; WrongCommand;;
-        esac
-}
-
 # Call the menu function
-menu
+create_custom_container
+setup_networking_macvlan
+setup_persistence

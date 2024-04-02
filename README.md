@@ -18,7 +18,7 @@ The price to pay is that almost none of the IPv6 support native to UDM remains e
 - You manually setup dhcpcdf process
 - The script above copies everything into the correct place
 - For the nspawn-container you did the `stable` build vs `unstable`
-- You ran the container as priviledged
+- Create the container using `./create_container.sh`
 
 
 ## Uninstallation
